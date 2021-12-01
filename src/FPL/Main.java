@@ -1,10 +1,26 @@
 package FPL;
 
+import jdk.jfr.SettingControl;
+
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Objects;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+
+       File file = new File("test2.wav");
+       AudioInputStream audio = AudioSystem.getAudioInputStream(file);
+       Clip clip = AudioSystem.getClip();
+       clip.open(audio);
+       clip.start();
+       clip.start();
+       clip.start();
 
         LoginPanel LoginPanel = new LoginPanel();
         LoginPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
