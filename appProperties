@@ -1,0 +1,4 @@
+#
+#Wed Dec 01 18:24:37 CET 2021
+db.user=root
+db.url=jdbc\:mysql\://localhost\:3306/footballmanager?&serverTimezone\=UTC
