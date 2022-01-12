@@ -20,7 +20,6 @@ public class DatabaseConnector {
             String dburl = applicationProps.getProperty("db.url");
 
             this.connection = DriverManager.getConnection(dburl,"root","password");
-            System.out.println("Polaczono");
         } catch (SQLException ex) {
             System.out.println("Connection Failed: " + ex.getMessage());
         }

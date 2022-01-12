@@ -59,20 +59,9 @@ class tableModel extends AbstractTableModel {
 
             while (rs.next()) {
                 String[] tmp = new String[rsmd.getColumnCount()];
-                if (!Objects.equals(query, "Select footballers.Name, footballers.Last_name, footballers.Market_value, footballers.Position, " +
-                        "clubs.Name as Club_Name from clubs, footballers inner join clubs as c on c.ID_Club = footballers.ID_Club") && !bool) {
-                    for (int i = 2; i <= rsmd.getColumnCount(); i++) {
-                        tmp[i - 2] = rs.getString(i);
-                    }
-                } else if (Objects.equals(query, "Select footballers.Name, footballers.Last_name, footballers.Market_value, footballers.Position, " +
-                        "clubs.Name as Club_Name from clubs, footballers inner join clubs as c on c.ID_Club = footballers.ID_Club")) {
                     for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-                        tmp[i - 1] = rs.getString(i);
-                    }
-                } else if (!Objects.equals(query, "Select footballers.Name, footballers.Last_name, footballers.Market_value, footballers.Position, " +
-                        "clubs.Name as Club_Name from clubs, footballers inner join clubs as c on c.ID_Club = footballers.ID_Club") && bool) {
-                    for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-                        tmp[i - 1] = rs.getString(i);
+                        if (!rsmd.getColumnName(i).contains("ID")) {
+                            tmp[i - 1] = rs.getString(i);
                     }
                 }
                 vector.addElement(tmp);

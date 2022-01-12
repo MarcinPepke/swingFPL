@@ -83,7 +83,7 @@ public class LoginPanel extends JFrame {
                 String login = loginField.getText();
                 String password = new String(passwordField.getPassword());
                 connector = new DatabaseConnector();
-                Statement stmt = connector.getConnection().createStatement();
+                 Statement stmt = connector.getConnection().createStatement();
 
                 try {
                     String query = "SELECT * FROM users";
@@ -117,15 +117,11 @@ public class LoginPanel extends JFrame {
     void createMainPanel(boolean isAdmin) throws IOException, SQLException {
         MainPanel mainPanel = new MainPanel(isAdmin);
         isLogged = true;
-        JOptionPane.showMessageDialog(null, "Logged in ");
         mainPanel.setTitle("Player Management Platform");
         mainPanel.setVisible(true);
         mainPanel.pack();
         mainPanel.setLocationRelativeTo(null);
         mainPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //mainPanel.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
-        //mainPanel.setLocation(0, 0);
-        //mainPanel.setLayout(null);
         this.setVisible(false);
     }
 
