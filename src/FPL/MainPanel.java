@@ -92,12 +92,12 @@ public class MainPanel extends JFrame {
 
 
 
-        centerPanel.setLayout(new GridBagLayout());
+        centerPanel.setLayout(new BorderLayout());
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
 
 
-        MainPanel.GridBag(50, 0, 0, 0, 50, 25, 0, 0, gridBagConstraints);
+       /* MainPanel.GridBag(50, 0, 0, 0, 50, 25, 0, 0, gridBagConstraints);
         centerPanel.add(playerButton, gridBagConstraints);
 
 
@@ -106,7 +106,7 @@ public class MainPanel extends JFrame {
 
 
         MainPanel.GridBag(50, 50, 0, 0, 50, 25, 2, 0, gridBagConstraints);
-        centerPanel.add(clubButton, gridBagConstraints);
+        centerPanel.add(clubButton, gridBagConstraints);*/
 
         MainPanel.GridBag(5, 10, 0, 0, 50, 50, 3, 0, gridBagConstraints);
 
@@ -300,7 +300,7 @@ public class MainPanel extends JFrame {
         });
         MainPanel.GridBag(0, 0, 0, 0, 500, 500, 0, 1, gridBagConstraints);
         gridBagConstraints.gridwidth = 4;
-        centerPanel.add(scrollPane, gridBagConstraints);
+        centerPanel.add(scrollPane, BorderLayout.CENTER);
 
         centerPanel.setPreferredSize(new Dimension(700, 700));
         centerPanel.setMaximumSize(new Dimension(800, 800));

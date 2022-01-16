@@ -15,7 +15,7 @@ public class DatabaseConnector {
             FileOutputStream out = new FileOutputStream("appProperties");
             Properties applicationProps = new Properties();
             applicationProps.setProperty("db.url", "jdbc:mysql://localhost:3306/footballmanager?&serverTimezone=UTC");
-            applicationProps.setProperty("db.user", "root");
+            applicationProps.setProperty("db.user", "password");
             applicationProps.store(out, "");
             String dburl = applicationProps.getProperty("db.url");
 

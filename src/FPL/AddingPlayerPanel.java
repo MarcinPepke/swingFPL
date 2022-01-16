@@ -11,6 +11,7 @@ import java.util.Objects;
 
 public class AddingPlayerPanel extends JFrame {
     JTextField name, surname, position;
+    JButton refresh;
     JComboBox<String> club;
     JFormattedTextField market_value;
     JLabel nameLabel, surnameLabel, positionLabel, market_valueLabel, clubLabel;
@@ -47,6 +48,7 @@ public class AddingPlayerPanel extends JFrame {
         market_valueLabel = new JLabel("Enter player market value: ");
         positionLabel = new JLabel("Enter player position: ");
         clubLabel = new JLabel("Enter player club: ");
+        refresh = new JButton("Odswiez kluby");
 
         name = new JTextField();
         surname = new JTextField();
@@ -55,12 +57,17 @@ public class AddingPlayerPanel extends JFrame {
         SQLcommands sql = new SQLcommands();
 
         club = new JComboBox<>(sql.select("select Name from clubs"));
+        final DefaultComboBoxModel model = new DefaultComboBoxModel(sql.select("select Name from clubs"));
+        club.setModel(model);
         club.addItem("Dodaj klub");
         club.addActionListener(e -> {
             if (Objects.equals(club.getSelectedItem(), "Dodaj klub")) {
                 try {
                     new AddingClubPanel(statusBar,mainPanel);
+                    //model = new DefaultComboBoxModel(sql.select("select Name from clubs"));
                     club.removeAllItems();
+                    club.setModel(model);
+                    //club.removeAllItems();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -74,6 +81,10 @@ public class AddingPlayerPanel extends JFrame {
         imgLabel.setPreferredSize(new Dimension(100, 100));
         imgLabel.setMinimumSize(new Dimension(100, 100));
 
+        refresh.addActionListener( e ->{
+            club.revalidate();
+            club.repaint();
+        });
         submitButton.addActionListener(e -> {
             try {
 
@@ -84,7 +95,7 @@ public class AddingPlayerPanel extends JFrame {
                             new AddingPlayer(name.getText(), surname.getText(), position.getText(), Objects.requireNonNull(club.getSelectedItem()).toString(), Integer.parseInt(market_value.getText()));
                             statusBar.setText("Aktualne wydarzenia: dodano pilkarza " + name.getText() + " " + surname.getText());
                             this.dispose();
-                            mainPanel.enable();
+                            jDialog.dispose();
                         }
                     } catch (NumberFormatException f) {
                         JOptionPane.showMessageDialog(this, "Entered NaN in market value");
@@ -111,6 +122,8 @@ public class AddingPlayerPanel extends JFrame {
         panel.add(clubLabel, gridBagConstraints);
         MainPanel.GridBag(10, 50, 0, 0, 100, 15, 2, 3, gridBagConstraints);
         panel.add(club, gridBagConstraints);
+        MainPanel.GridBag(10,50,0,0,0,0,1,3,gridBagConstraints);
+        panel.add(refresh,gridBagConstraints);
         MainPanel.GridBag(10, 50, 0, 0, 0, 0, 0, 4, gridBagConstraints);
         panel.add(positionLabel, gridBagConstraints);
         MainPanel.GridBag(10, 50, 0, 0, 100, 15, 2, 4, gridBagConstraints);
@@ -136,4 +149,9 @@ public class AddingPlayerPanel extends JFrame {
 
 
     }
+/*    public String[] combo() {
+        SQLcommands sql = new SQLcommands();
+
+        return sql.select()
+    }*/
 }

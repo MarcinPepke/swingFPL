@@ -14,11 +14,11 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException, SQLException {
 
-       /*File file = new File("test2.wav");
+       File file = new File("test2.wav");
        AudioInputStream audio = AudioSystem.getAudioInputStream(file);
        Clip clip = AudioSystem.getClip();
        clip.open(audio);
-       clip.start();*/
+       clip.start();
         new LoginPanel().createMainPanel(false);
         /*LoginPanel LoginPanel = new LoginPanel();
         LoginPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

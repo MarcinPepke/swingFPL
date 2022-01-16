@@ -64,7 +64,8 @@ public class AddingClubPanel extends JFrame {
                             statusBar.setText("Aktualne wydarzenia: dodano klub " + name.getText());
 
                             this.dispose();
-                            mainPanel.enable();
+                            jDialog.dispose();
+
 
                         }
                     } catch (NumberFormatException f) {

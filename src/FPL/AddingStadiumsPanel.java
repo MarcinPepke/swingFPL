@@ -68,7 +68,7 @@ public class AddingStadiumsPanel extends JFrame implements ItemListener {
                             new AddingPlayer(name.getText(), surname.getText(), position.getText(), "", Integer.parseInt(market_value.getText()));
                             statusBar.setText("Aktualne wydarzenia: dodano stadion " + name.getText() );
                             this.dispose();
-                            mainPanel.enable();
+                            jDialog.dispose();
                         }
                     } catch (NumberFormatException f) {
                         JOptionPane.showMessageDialog(this, "Entered NaN");
